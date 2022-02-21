@@ -1,8 +1,11 @@
+import React from 'react';
+import './App.css';
+import Products from './Products';
 
 function App() {
   return (
-    <div>
-     Welcome from App
+    <div className="container">
+      <Products />
     </div>
   );
 }
