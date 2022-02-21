@@ -2,16 +2,19 @@
 
 ## 2022-02-21 Meeting
 
-### project structure
+### project dependencies
 
 create-react-app
 
-fake-data
+[fake-data](https://fakestoreapi.com/docs)
+
 react-router
+
 react-async
+
 redux???
 
-material-ui
+material-ui???
 
 ### components
 
