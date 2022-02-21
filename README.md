@@ -1,3 +1,31 @@
+# Project notes
+
+## 2022-02-21 Meeting
+
+### project structure
+
+create-react-app
+
+fake-data
+react-router
+react-async
+redux???
+
+material-ui
+
+### components
+
+    products(++filtering functionalities) - Fabio
+
+    navigation - Pavithra
+
+    shopping cart - Ankita
+
+    user - Niko
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
