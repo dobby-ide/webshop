@@ -10,7 +10,7 @@ create-react-app
 
 react-router
 
-react-async
+react-async: npm install react-async
 
 redux???
 
