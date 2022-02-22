@@ -12,8 +12,18 @@ const loadUsers = async () =>
 function Products() {
   const { data, error, isLoading } = useAsync({ promiseFn: loadUsers });
   //For saving in cart.json file
+  const url = "http://localhost:3010/cart"
   function saveToCart(products){
-    
+    const options = {method:'POST',
+                    headers:{'Content-type':'application/json'},
+                    body:JSON.stringify({id:products.id, title:products.title, price:products.price, description:products.description, category:products.category} )
+                   
+                    }
+  fetch(url, options)
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data.id + "Added successfully");
+    })
   }
   if (isLoading) return 'Loading...';
   if (error) return `Something went wrong: ${error.message}`;
