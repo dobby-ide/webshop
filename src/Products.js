@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import { useAsync } from 'react-async';
 
@@ -11,8 +11,9 @@ const loadUsers = async () =>
 // Our component
 function Products() {
   const { data, error, isLoading } = useAsync({ promiseFn: loadUsers });
-  //For saving in cart.json file
+  const [cart, setCart] = useState([]);
   const url = "http://localhost:3010/cart"
+  //For saving in cart.json file
   function saveToCart(products){
     const options = {method:'POST',
                     headers:{'Content-type':'application/json'},
@@ -23,6 +24,7 @@ function Products() {
     .then(response=>response.json())
     .then(data=>{
       console.log(data.id + "Added successfully");
+       setCart([...cart, data.id]);
     })
   }
   if (isLoading) return 'Loading...';
@@ -39,7 +41,7 @@ function Products() {
             <div className="col-md-12">
               <p>{products.title}</p>
               <p>{products.price}</p>
-              <p><button onClick={()=>saveToCart(products)}>Add To Cart</button></p>
+              <p><button disabled={cart.some(cartId => cartId===products.id)} onClick={()=>saveToCart(products)}>Add To Cart</button></p>
               <img src={products.image} className="products_img" />
             </div>
           </div>
