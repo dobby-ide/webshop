@@ -8,6 +8,7 @@ import WomenClothes from './WomenClothes';
 import Jewelry from './Jewelry';
 import MenClothes from './MenClothes';
 import Electronics from './Electronics';
+import Navbar from './Components/Navbar';
 
 
 
@@ -57,6 +58,7 @@ function App() {
   }
   return (
     <div className="container">
+      <Navbar/>
       <Filter
         visibilityOnOff={productsisVisible}
         changeWomenVisibility={onWomenVisibility}
