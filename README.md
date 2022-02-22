@@ -14,7 +14,7 @@ react-async: npm install react-async
 
 redux???
 
-material-ui???
+material-ui: npm install @mui/material @emotion/react @emotion/styled
 
 ### components
 
