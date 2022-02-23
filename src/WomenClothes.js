@@ -1,11 +1,10 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import { useState, useEffect } from "react";
-
+import { useState, useEffect } from 'react';
 
 function WomenClothes() {
-
+  const womenClothingArray = [];
   const [womenCat, setWomenCat] = useState([]);
     const [cart, setCart] = useState([]);
   const url = "http://localhost:3010/cart"
@@ -32,43 +31,42 @@ function WomenClothes() {
   }
   useEffect(()=>{getCart()}, [true]);
 
-useEffect(()=>{
-  loadProducts();
-},[]);
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
- const loadProducts = async () =>{
-  const res=  await fetch("https://fakestoreapi.com/products");
-   const jsonData=await res.json();
-   
-   let t=[];
+  const loadProducts = async () => {
+    const res = await fetch('https://fakestoreapi.com/products');
+    const jsonData = await res.json();
+
+    let t = [];
     for (let i = 0; i < jsonData.length; i++) {
-       if (jsonData[i].category === "women's clothing") {
-       
-         t.push(jsonData[i]);
-       
+      if (jsonData[i].category === "women's clothing") {
+        t.push(jsonData[i]);
+
         //t is now an array of women's clothing
-        
-        
-       }}
-setWomenCat(t);
-   
-  
-  
+      }
+    }
+    setWomenCat(t);
+  };
+
+  womenClothingArray.push(...womenCat);
+
+  function sortingByPrice() {
+    let sortedArray = womenClothingArray.sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
+
+    setWomenCat(sortedArray);
+    console.log(womenCat);
   }
 
-      
-      // 
-         // return res[i];
-  
-  
-
-  
-  
-    // The rendered component
+  // The rendered component
   return (
     <div className="container">
       <div>
         <h2>products</h2>
+        <button onClick={sortingByPrice}>filter by price</button>
       </div>
       {womenCat.map((products) => (
         <div key={products.id} className="row">
@@ -81,6 +79,7 @@ setWomenCat(t);
         </div>
       ))}
     </div>
-  );}
+  );
+}
 
 export default WomenClothes;
