@@ -19,6 +19,8 @@ material-ui: npm install @mui/material @emotion/react @emotion/styled
 #For reading or writing to cart.json file (from src/folder)
 npm install -g json-server
 npx json-server -H localhost -p 3010 -w cart.json
+#Login routine also uses json-server (different port). In src/ folder, run:
+    npx json-server -H localhost -p 3020 -w user.json
 ### components
 
     products(++filtering functionalities) - Fabio
