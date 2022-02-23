@@ -10,11 +10,11 @@ create-react-app
 
 react-router
 
-react-async
+react-async: npm install react-async
 
 redux???
 
-material-ui???
+material-ui: npm install @mui/material @emotion/react @emotion/styled
 
 #For reading or writing to cart.json file
 npm install -g json-server

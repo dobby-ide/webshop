@@ -27,6 +27,12 @@ function Products() {
        setCart([...cart, data.id]);
     })
   }
+
+  //For saving in cart.json file
+  function saveToCart(products) {}
+  const { data, error, isLoading } = useAsync({ promiseFn: loadUsers });
+
+
   if (isLoading) return 'Loading...';
   if (error) return `Something went wrong: ${error.message}`;
   if (data)
@@ -41,7 +47,15 @@ function Products() {
             <div className="col-md-12">
               <p>{products.title}</p>
               <p>{products.price}</p>
+
               <p><button disabled={cart.some(cartId => cartId===products.id)} onClick={()=>saveToCart(products)}>Add To Cart</button></p>
+
+              <p>
+                <button onClick={() => saveToCart(products)}>
+                  Add To Cart
+                </button>
+              </p>
+
               <img src={products.image} className="products_img" />
             </div>
           </div>
