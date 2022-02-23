@@ -1,0 +1,10 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "admin",
+      "password": "admin",
+      "email": "admin@webshop.con"
+    }
+  ]
+}
