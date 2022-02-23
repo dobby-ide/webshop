@@ -14,7 +14,7 @@ const getCredentials = async (name) => {
 };
 
 // Login component displays login UI and authenticates from json-server
-function Login() {
+function Login(props) {
   const [user, setUser] = useState("");
 
   const handleLogin = (event) => {
@@ -34,11 +34,12 @@ function Login() {
   const handleLogout = (event) => {
     event.preventDefault();
     setUser("");
+    props.setToggle(false);
   };
 
   // JSX code for login form
   const loginForm = (
-    <div className="form">
+    <div style={props.style}>
       <form name="login" onSubmit={handleLogin}>
         <div className="input-container">
           <input type="text" name="uname" placeholder="Username" required />
@@ -58,8 +59,6 @@ function Login() {
       <form name="logout" onSubmit={handleLogout}>
         <div className="input-container">
           Logged in as {user}
-        </div>
-        <div className="button-container">
           <input type="submit" value="Log out" />
         </div>
       </form>
