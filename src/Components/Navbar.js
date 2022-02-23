@@ -1,7 +1,11 @@
-import { Search } from '@material-ui/icons';
+import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import '../App.css';
 import styled from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {faCoffee} from "@fortawesome/fontawesome-svg-core";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Badge } from '@material-ui/core';
 
 const Input = styled.input`
  border: none;
@@ -15,17 +19,20 @@ function Navbar() {
             <div className='nav-left'><span><h1>CLOTHS.</h1></span></div>
             <div className='nav-center'><div className='search-container'>
                 <Input placeholder='search'/>
-                <Search/>
+                <Search style={{color:"gray",fontSize:16}}/>
                 </div></div>
             <div className='nav-right'>
                 <div className='nav-menu'>
-                    Home
+                    REGISTER
+                {/* <FontAwesomeIcon icon={faUser} /> */}
                 </div>
                 <div className='nav-menu'>
-                    Categories
+                    SIGN IN
                 </div>
                 <div className='nav-menu'>
-                    Contact
+                <Badge badgeContent={5} color="primary">
+                    <ShoppingCartOutlined color="action" />
+                    </Badge>
                 </div>
             </div>
         </div>
