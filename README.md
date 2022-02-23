@@ -16,7 +16,7 @@ redux???
 
 material-ui: npm install @mui/material @emotion/react @emotion/styled
 
-#For reading or writing to cart.json file
+#For reading or writing to cart.json file (from src/folder)
 npm install -g json-server
 npx json-server -H localhost -p 3010 -w cart.json
 ### components
