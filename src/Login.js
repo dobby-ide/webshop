@@ -3,23 +3,21 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
 
-const login = async (name, pw) => {
-    console.log("juu");
-    fetch('https://fakestoreapi.com/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({
-            username: name,
-            password: pw
-        })
-    })
-    .then(res => res.json())
-    .then(json => console.log(json + " jee"));
+const url = "http://localhost:3020/user?name=";
+
+// Get user data from server
+// Client-side auth is a big NO-NO, but it works for our project
+const getCredentials = async (name) => {
+    let resp = await fetch(url + name, { method: 'GET' });
+    let data = await resp.json();
+    return data;
 };
 
 // Login component displays login UI and authenticates from json-server
 function Login() {
   const [error, setError] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [user, setUser] = useState([]);
 
   const errors = {
     uname: "invalid username",
@@ -30,10 +28,14 @@ function Login() {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms.login;
-    //var form = document.fyyorms.login;
-    login(uname.value, pass.value);
-
+    let { uname, pass } = document.forms.login;
+    getCredentials(uname.value)
+        .then(creds => {
+            console.log(creds);
+            if (creds.length === 0) console.log("User not found.");
+            else if (creds[0].password === pass.value) console.log("User logged in");
+            else console.log("Login failed.");
+        });
   };
 
   // Generate JSX code for error message
