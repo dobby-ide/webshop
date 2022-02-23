@@ -1,10 +1,12 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import { useState, useEffect } from "react";
-
+import { useState, useEffect } from 'react';
 
 function Electronics() {
+  let electronicsData = [];
+  const [electronics, setElectronics] = useState([]);
+
 
   const [womenCat, setWomenCat] = useState([]);
     const [cart, setCart] = useState([]);
@@ -32,45 +34,42 @@ function Electronics() {
   }
   useEffect(()=>{getCart()}, [true]);
 
-useEffect(()=>{
-  loadProducts();
-},[]);
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
- const loadProducts = async () =>{
-  const res=  await fetch("https://fakestoreapi.com/products");
-   const jsonData=await res.json();
-   
-   let t=[];
+
+  const loadProducts = async () => {
+    const res = await fetch('https://fakestoreapi.com/products');
+    const jsonData = await res.json();
+
+    let t = [];
     for (let i = 0; i < jsonData.length; i++) {
-       if (jsonData[i].category === "electronics") {
-       
-         t.push(jsonData[i]);
-       
+      if (jsonData[i].category === 'electronics') {
+        t.push(jsonData[i]);
+
         //t is now an array of electronics
-        
-        
-       }}
-setWomenCat(t);
-   
-  
-  
+      }
+    }
+    setElectronics(t);
+  };
+  electronicsData.push(...electronics);
+  function sortingByPrice() {
+    let sortedArray = electronicsData.sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
+
+    setElectronics(sortedArray);
   }
 
-      
-      // 
-         // return res[i];
-  
-  
-
-  
-  
-    // The rendered component
+  // The rendered component
   return (
     <div className="container">
       <div>
         <h2>products</h2>
+        <button onClick={sortingByPrice}>filter by price</button>
       </div>
-      {womenCat.map((products) => (
+      {electronics.map((products) => (
         <div key={products.id} className="row">
           <div className="col-md-12">
             <p>{products.title}</p>
@@ -81,6 +80,7 @@ setWomenCat(t);
         </div>
       ))}
     </div>
-  );}
+  );
+}
 
 export default Electronics;
