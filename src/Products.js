@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import { useAsync } from 'react-async';
 
@@ -27,7 +27,15 @@ function Products() {
        setCart([...cart, data.id]);
     })
   }
-
+  //Fetches product in the cart
+    const getCart = () =>{
+    console.log("here");
+    fetch(url)
+    .then(response => response.json())   
+    .then((cartList)=>setCart(cartList.map(item=>item.id)))    
+    
+  }
+  useEffect(()=>{getCart()}, [true]);
   
 
   if (isLoading) return 'Loading...';
@@ -44,9 +52,7 @@ function Products() {
             <div className="col-md-12">
               <p>{products.title}</p>
               <p>{products.price}</p>
-
               <p><button disabled={cart.some(cartId => cartId===products.id)} onClick={()=>saveToCart(products)}>Add To Cart</button></p>
-
               <img src={products.image} className="products_img" />
             </div>
           </div>
