@@ -28,10 +28,7 @@ function Products() {
     })
   }
 
-  //For saving in cart.json file
-  function saveToCart(products) {}
-  const { data, error, isLoading } = useAsync({ promiseFn: loadUsers });
-
+  
 
   if (isLoading) return 'Loading...';
   if (error) return `Something went wrong: ${error.message}`;
