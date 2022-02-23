@@ -10,6 +10,7 @@ import MenClothes from './MenClothes';
 import Electronics from './Electronics';
 import Navbar from './Components/Navbar';
 import Login from './Login';
+import Footer from './Components/Footer';
 
 
 
@@ -76,6 +77,7 @@ function App() {
       {jewelryisVisible ? <Jewelry /> : null}
       {menClothingisVisible ? <MenClothes /> : null}
       {electronicsisVisible ? <Electronics /> : null}
+      <Footer/>
     </div>
   );
 }
