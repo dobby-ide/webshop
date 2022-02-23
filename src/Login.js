@@ -14,47 +14,38 @@ const getCredentials = async (name) => {
 };
 
 // Login component displays login UI and authenticates from json-server
-function Login() {
-  const [error, setError] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [user, setUser] = useState([]);
+function Login(props) {
+  const [user, setUser] = useState("");
 
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
-  };
-
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     //Prevent page reload
     event.preventDefault();
 
     let { uname, pass } = document.forms.login;
+    uname.className = pass.className = "";
     getCredentials(uname.value)
         .then(creds => {
-            console.log(creds);
-            if (creds.length === 0) console.log("User not found.");
-            else if (creds[0].password === pass.value) console.log("User logged in");
-            else console.log("Login failed.");
+            if (creds.length === 0) uname.className += "login-error";
+            else if (creds[0].password !== pass.value) pass.className += "login-error";
+            else setUser(creds[0].name);
         });
   };
 
-  // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === error.name && (
-      <div className="error">{error.message}</div>
-    );
+  const handleLogout = (event) => {
+    event.preventDefault();
+    setUser("");
+    props.setToggle(false);
+  };
 
   // JSX code for login form
-  const renderForm = (
-    <div className="form">
-      <form name="login" onSubmit={handleSubmit}>
+  const loginForm = (
+    <div style={props.style}>
+      <form name="login" onSubmit={handleLogin}>
         <div className="input-container">
           <input type="text" name="uname" placeholder="Username" required />
-          {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <input type="password" name="pass" placeholder="Password" required />
-          {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
           <input type="submit" value="Login" />
@@ -63,9 +54,20 @@ function Login() {
     </div>
   );
 
+  const logoutForm = (
+    <div className="form">
+      <form name="logout" onSubmit={handleLogout}>
+        <div className="input-container">
+          Logged in as {user}
+          <input type="submit" value="Log out" />
+        </div>
+      </form>
+    </div>
+  );
+
   return (
     <div className="login-ui">
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        { user === "" ? loginForm : logoutForm }
     </div>
   );
 }
