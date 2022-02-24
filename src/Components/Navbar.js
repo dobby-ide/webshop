@@ -2,7 +2,7 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import '../App.css';
 import styled from "styled-components";
-
+import { Link, BrowserRouter } from 'react-router-dom';
 import { Badge } from '@material-ui/core';
 import Login from '../Login';
 
@@ -16,15 +16,18 @@ function Navbar() {
 
   return (
     <div className='nav-container'>
+        <BrowserRouter>
         <div className='nav-wrapper'>
-            <div className='nav-left'><span><h1>CLOTHS.</h1></span></div>
+            <div className='nav-left'><h1><Link to="/">CLOTHS.</Link></h1></div>
             <div className='nav-center'><div className='search-container'>
                 <Input placeholder='search'/>
                 <Search style={{color:"gray",fontSize:16}}/>
                 </div></div>
             <div className='nav-right'>
                 <div className='nav-menu'>
+                    <Link to="/register">
                     REGISTER
+                    </Link>
                 {/* <FontAwesomeIcon icon={faUser} /> */}
                 </div>
                 <div className='nav-menu'>
@@ -38,6 +41,7 @@ function Navbar() {
                 </div>
             </div>
         </div>
+        </BrowserRouter>
         
     </div>
   )
