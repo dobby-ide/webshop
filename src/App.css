@@ -97,7 +97,11 @@
   }
   .filter-container {
     margin-bottom: 5px;
+    margin-top: 5px;
     padding-bottom: 5px;
     display: flex;
     justify-content: center;
+  }
+  .filter-btn{
+    margin-right: 10px;
   }

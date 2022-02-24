@@ -28,19 +28,19 @@ function Filter({
   return (
     <div className="filter-container">
       <div>
-        <button onClick={onResettingToggles}>All Products</button>
+        <button className="filter-btn" onClick={onResettingToggles}>All Products</button>
       </div>
       <div>
-        <button onClick={onWomanClothesFilter}>Women Clothes</button>
+        <button className="filter-btn" onClick={onWomanClothesFilter}>Women Clothes</button>
       </div>
       <div>
-        <button onClick={onMenClothesFilter}>Men Clothes</button>
+        <button className="filter-btn" onClick={onMenClothesFilter}>Men Clothes</button>
       </div>
       <div>
-        <button onClick={onJewelryFilter}>Jewelry</button>
+        <button className="filter-btn" onClick={onJewelryFilter}>Jewelry</button>
       </div>
       <div>
-        <button onClick={onElectronicsFilter}>Electronics</button>
+        <button className="filter-btn" onClick={onElectronicsFilter}>Electronics</button>
       </div>
     </div>
   );
