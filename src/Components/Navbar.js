@@ -2,9 +2,9 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import '../App.css';
 import styled from "styled-components";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 // import {faCoffee} from "@fortawesome/fontawesome-svg-core";
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 import { Badge } from '@material-ui/core';
 
 const Input = styled.input`
