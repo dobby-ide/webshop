@@ -11,6 +11,7 @@ import Electronics from './Electronics';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import CreateUser from './CreateUser';
+import RouterPath from './RouterPath';
 
 
 //useState to hide/show components
@@ -60,7 +61,8 @@ function App() {
   return (
     <div className="container">
       <Navbar/>
-      <CreateUser/>
+      <RouterPath/>
+      {/* <CreateUser/> */}
       <Filter
         visibilityOnOff={productsisVisible}
         changeWomenVisibility={onWomenVisibility}
