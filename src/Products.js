@@ -53,9 +53,6 @@ function Products() {
     return (
       <Card className="products_card">
         <div className="container">
-          <div>
-            <h2>products</h2>
-          </div>
           {data.map((products) => (
             <div key={products.id} className="row">
               <div className="col-md-12">
