@@ -10,7 +10,7 @@ import MenClothes from './MenClothes';
 import Electronics from './Electronics';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-
+import CreateUser from './CreateUser';
 
 
 //useState to hide/show components
@@ -60,6 +60,7 @@ function App() {
   return (
     <div className="container">
       <Navbar/>
+      <CreateUser/>
       <Filter
         visibilityOnOff={productsisVisible}
         changeWomenVisibility={onWomenVisibility}
