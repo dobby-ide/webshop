@@ -59,17 +59,17 @@ function Products() {
           {data.map((products) => (
             <div key={products.id} className="row">
               <div className="col-md-12">
-                <p>{products.title}</p>
-                <p>{products.price}</p>
-                <p>
-                  <button
-                    disabled={cart.some((cartId) => cartId === products.id)}
-                    onClick={() => saveToCart(products)}
-                  >
-                    Add To Cart
-                  </button>
-                </p>
-                <img src={products.image} className="products_img" />
+                <div>{products.title}</div>
+                <div>{products.price}</div>
+                <div>
+                  <img src={products.image} className="products_img" />
+                </div>
+                <button
+                  disabled={cart.some((cartId) => cartId === products.id)}
+                  onClick={() => saveToCart(products)}
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           ))}
