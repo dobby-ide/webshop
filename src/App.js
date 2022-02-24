@@ -60,8 +60,8 @@ function App() {
   }
   return (
     <div className="container">
-      <Navbar/>
-      <RouterPath/>
+      {/* <Navbar/>
+      <RouterPath/> */}
       {/* <CreateUser/> */}
       <Filter
         visibilityOnOff={productsisVisible}
