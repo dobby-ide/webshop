@@ -18,7 +18,7 @@ function Navbar() {
     <div className='nav-container'>
         <BrowserRouter>
         <div className='nav-wrapper'>
-            <div className='nav-left'><h1>CLOTHS.</h1></div>
+            <div className='nav-left'><h1><Link to="/">CLOTHS.</Link></h1></div>
             <div className='nav-center'><div className='search-container'>
                 <Input placeholder='search'/>
                 <Search style={{color:"gray",fontSize:16}}/>
