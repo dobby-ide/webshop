@@ -2,13 +2,16 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  text-align:center;
+ 
   
 
 }
 body{
   margin-left:12vw;
   margin-right:12vw;
+}
+.men_card, .women_card, .jewelry_card, .electronics_card{
+  display:grid;
 }
 .products_card{
   margin-left: 2em;
@@ -19,23 +22,43 @@ body{
 
 }
 .container{
+  grid-row-start: 2 ;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  grid-column-end:1;
+  align-items:center;
+  justify-content: center;
+  max-width:1200px;
   
-   max-width:1200px;
-   
-  justify-content: space-around;
-  
-   display:flex;
-   border:2px solid black;
-  
-   flex-wrap:wrap;
+  display:flex;
+  border:2px solid black;
+  flex-wrap:wrap;
+ 
 }
 .row{
-max-width: 20rem;
+  max-width: 23rem;
+  margin-top:20px;
+  margin-bottom: 20px;
+  
+
  
   
 }
 .col-md-12{
   text-align:center;
-  border: solid 1px rgb(3, 2, 2);
- 
+  
+ width:140px;
+}
+.products_img{
+  width:50px;
+}
+
+.filter_by_price_button{
+  position:relative;
+  width:100px;
+  grid-row-start: 1 ;
+  grid-column-start: 1;
+  grid-row-end: 1;
+  grid-column-end:1;
+  
 }
