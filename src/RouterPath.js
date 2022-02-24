@@ -13,12 +13,11 @@ function RouterPath() {
         <Navbar/>
       </div>
         <Switch>
-        <Route path='/' exact>
-                <App/>
-            </Route>
-            <Route path='/register' >
-                <CreateUser/>
-            </Route>
+        
+            
+            <Route path='/register' component={CreateUser}/>
+            <Route path='/' exact component={App}/>
+           
             {/* <Route path='/signin' >
                 <Login/>
             </Route> */}
