@@ -44,6 +44,10 @@
       cursor: pointer;
       margin-left: 25px;
   }
+  .login-error {
+      border:1px solid red;
+      outline:2px solid red;
+  }
   .footer-container {
     display: flex;
   }

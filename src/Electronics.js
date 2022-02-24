@@ -15,7 +15,7 @@ function Electronics() {
   function saveToCart(products){
     const options = {method:'POST',
                     headers:{'Content-type':'application/json'},
-                    body:JSON.stringify({id:products.id, title:products.title, price:products.price, description:products.description, category:products.category} )
+                    body:JSON.stringify({id:products.id, title:products.title, price:products.price, description:products.description, category:products.category, image:products.image, quantity:"1"} )
                    
                     }
   fetch(url, options)
