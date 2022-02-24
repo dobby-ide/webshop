@@ -1,6 +1,7 @@
 import React from "react";
 import { useAsync } from "react-async";
 import {useState} from "react";
+import "./App.css"
 
 function Filter({
   changeWomenVisibility,
@@ -25,7 +26,7 @@ function Filter({
     changeToAllProductsVisibility();
   };
   return (
-    <div>
+    <div className="filter-container">
       <div>
         <button onClick={onResettingToggles}>All Products</button>
       </div>

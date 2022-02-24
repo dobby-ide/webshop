@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route, Routes , Switch,BrowserRouter} from "react-router-dom";
+import { Route , Switch,BrowserRouter} from "react-router-dom";
 import CreateUser from "./CreateUser";
 import App from "./App";
 import Navbar from './Components/Navbar';
+import Login from './Login';
 
 function RouterPath() {
   return (
@@ -18,6 +19,9 @@ function RouterPath() {
             <Route path='/register' >
                 <CreateUser/>
             </Route>
+            {/* <Route path='/signin' >
+                <Login/>
+            </Route> */}
         </Switch>
       </BrowserRouter>
     </div>
