@@ -70,7 +70,9 @@ function Jewelry() {
   return (
     <Card className="jewelry_card">
       <div className="filter_by_price_button">
-        <button onClick={sortingByPrice}>filter by price</button>
+        <button onClick={sortingByPrice} className="filter_button">
+          filter by price
+        </button>
       </div>
       <div className="container">
         {womenCat.map((products) => (
