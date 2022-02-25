@@ -62,6 +62,7 @@ function Products() {
                   <img src={products.image} className="products_img" />
                 </div>
                 <button
+                  className="add_to_cart_btn"
                   disabled={cart.some((cartId) => cartId === products.id)}
                   onClick={() => saveToCart(products)}
                 >
