@@ -7,8 +7,10 @@
 
 }
 body{
+  font-size:16px;
   margin-left:12vw;
   margin-right:12vw;
+  
 }
 .men_card, .women_card, .jewelry_card, .electronics_card{
   display:grid;
@@ -39,7 +41,8 @@ body{
   max-width: 23rem;
   margin-top:20px;
   margin-bottom: 20px;
-  
+  margin-left: 20px;
+  margin-right: 20px;
 
  
   
@@ -54,6 +57,7 @@ body{
 }
 
 .filter_by_price_button{
+  
   position:relative;
   width:100px;
   grid-row-start: 1 ;
@@ -61,4 +65,40 @@ body{
   grid-row-end: 1;
   grid-column-end:1;
   
+}
+
+.filter_button{
+  margin-top:6px;
+  margin-bottom:6px;
+  margin-left:2px;
+  width:130px;
+  height:30px;
+  background-color:rgb(53, 53, 53);
+  color:white;
+  text-transform:uppercase;
+  padding:2px;
+  border-radius:100px;
+  transition:all .2s;
+}
+.filter_button:hover{
+  transform:translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+.filter_button:active{
+  transform:translateY(-1px);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+}
+.filter-btn{
+  margin-top:6px;
+  margin-bottom:6px;
+  margin-left:2px;
+  width:130px;
+  height:30px;
+  background-color:rgb(53, 53, 53);
+  color:white;
+  text-transform:uppercase;
+  padding:2px;
+  border-radius:100px;
+  transition:all .2s;
+
 }
