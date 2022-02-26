@@ -25,6 +25,12 @@ material-ui: npm install @mui/material @emotion/react @emotion/styled
 
     npx json-server -H localhost -p 3020 -w user.json
 
+## For fort-awesome dependencies:
+
+npm i @fortawesome/fontawesome-svg-core
+npm i @fortawesome/react-fontawesome
+npm i @fortawesome/free-solid-svg-icons
+
 ### components
 
     products(++filtering functionalities) - Fabio
@@ -34,7 +40,6 @@ material-ui: npm install @mui/material @emotion/react @emotion/styled
     shopping cart - Ankita
 
     user - Niko
-
 
 installing Router part - npm install react-router-dom
 
