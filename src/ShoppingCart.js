@@ -14,16 +14,43 @@ const ShoppingCart = ()=>{
     }
     useEffect(()=>{getCartItems()}, [true]);
 
+    const addItem = (id)=>{
+        const itemToChange = cartList.find((element)=>element.id===id);
+        console.log(itemToChange)        
+            setCartList(cartList.map((item)=>{
+            if(item.id==itemToChange.id){
+                let newQuantity = Number(itemToChange.quantity)+1
+                return{
+                    ...item,
+                    quantity:newQuantity,
+                }
+            }
+            return item;
+        }));   
+    }
     const reduceItem = (id)=>{
-        const itemTochange = cartList.find((element)=>element.id===id);
+        const itemToChange = cartList.find((element)=>element.id===id);
+        console.log(itemToChange)
+        if(itemToChange.quantity>0){
+            setCartList(cartList.map((item)=>{
+            if(item.id==itemToChange.id){
+                return{
+                    ...item,
+                    quantity:(itemToChange.quantity-1),                    
+                }
+            }
+            return item;
+        }));
+        }
         
 
     }
-    const handleChange =()=>{}
+    const handleChange =()=>{
+    }
     return(
         <div>
             <h2>Shopping Cart</h2>
-           <table width="75%">
+           <table width="100%">
             <tbody>
                 <tr>
                     <td colSpan="2" rowSpan="2">Product</td>
@@ -33,25 +60,24 @@ const ShoppingCart = ()=>{
                 </tr>
             </tbody>
             {cartList
-                .map(item=>{
-                return(<tbody key={item.id}>
+                .map((item, index)=>{
+                return(<tbody key={index}>
                     <tr>
                         <td colSpan="2"><img src={item.image} alt="image unavailable" className="products_img" ></img></td>
                         <td colSpan="2">{item.title} </td>
                         <td>
                             <FontAwesomeIcon icon={faMinus} onClick={()=>reduceItem(item.id)} />
                             <input type="text" name='quantity' id='quantity' value={item.quantity} onChange={handleChange} />
-                            <FontAwesomeIcon icon={faPlus}/>
+                            <FontAwesomeIcon icon={faPlus} onClick={()=>addItem(item.id)}/>
                         </td>
-                        <td>{item.price} € </td>
+                        <td>{item.quantity*item.price} € </td>
                         <td> <FontAwesomeIcon                                
                                 icon={faTrashAlt}                               
                               /></td>
                     </tr>
                 </tbody>)
                 })}
-            
-           </table>
+            </table>
         </div>
     )
 }
