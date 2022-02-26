@@ -5,7 +5,6 @@ import {faTrashAlt, faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 
 const ShoppingCart = ()=>{
     const [cartList, setCartList] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
     const url = "http://localhost:3010/cart";
 
     const getCartItems = () =>{
@@ -45,9 +44,11 @@ const ShoppingCart = ()=>{
             }
             return item;
         }));
-        }
-        
-
+        }       
+     }
+     const deleteItem=(id) => {
+        const updatedList = cartList.filter(element=>element.id!==id)
+        setCartList(updatedList)
     }
     
     return(
@@ -74,7 +75,7 @@ const ShoppingCart = ()=>{
                             <FontAwesomeIcon icon={faPlus} onClick={()=>addItem(item.id)}/>
                         </td>
                         <td>{item.quantity*item.price} € </td>                        
-                        <td> <FontAwesomeIcon icon={faTrashAlt} /></td>
+                        <td> <FontAwesomeIcon icon={faTrashAlt} onClick={()=>deleteItem(item.id)}/></td>
                     </tr>                    
                 </tbody>)
                 })}                
