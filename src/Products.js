@@ -1,18 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useAsync } from 'react-async';
 import Card from './Card';
+import SingleProduct from './SingleProduct';
+
 // Then we'll fetch user data from this API
 const loadUsers = async () =>
   await fetch('https://fakestoreapi.com/products')
     .then((res) => (res.ok ? res : Promise.reject(res)))
     .then((res) => res.json());
 
-// Our component
+let oneOfTheProducts = {};
 function Products() {
+  const onShowingProduct = (e) => {
+    const j = data[e.currentTarget.id - 1];
+    oneOfTheProducts = j;
+    setSingleProdVis(true);
+    setSingleProduct(oneOfTheProducts);
+  };
+  const [singleProdVis, setSingleProdVis] = useState(false);
+  const [singleProduct, setSingleProduct] = useState([{}]);
   const { data, error, isLoading } = useAsync({ promiseFn: loadUsers });
   const [cart, setCart] = useState([]);
   const url = 'http://localhost:3010/cart';
+  const changingVisibility = (e) => {
+    console.log(singleProdVis);
+    setSingleProdVis(e);
+  };
   //For saving in cart.json file
   function saveToCart(products) {
     const options = {
@@ -52,9 +66,23 @@ function Products() {
     // The rendered component
     return (
       <Card className="products_card">
+        {singleProdVis ? (
+          <SingleProduct
+            visibility={changingVisibility}
+            className="overlay_container"
+            singleproduct={singleProduct}
+            allproducts={data}
+            id={singleProduct.id}
+          ></SingleProduct>
+        ) : null}
         <div className="container">
           {data.map((products) => (
-            <div key={products.id} className="row">
+            <div
+              key={products.id}
+              id={products.id}
+              className="row"
+              onClick={onShowingProduct}
+            >
               <div className="col-md-12">
                 <div>{products.title}</div>
                 <div>{products.price}</div>
