@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
 import user3 from "./img/user3.jpg";
+import username from "./img/username.jpg";
 const url = "http://localhost:3020/user";
 
 // Post user data to json-server
@@ -38,22 +39,30 @@ function CreateUser() {
       <div className='register-logo'>
         <div className='register-container'>
           <img className='register-profile' src={user3}></img>            
-              {/* <form name="register" onSubmit={handleSubmit}>
+              
+            </div>
+            
+      </div>
+      <div>
+              <h1>Registration Page </h1>
+              <form name="register" onSubmit={handleSubmit}>
                 <div className="input-container">
-                  <input type="text" name="uname" placeholder="Username" required />
+                  <img className="email" src={username} alt="username" />
+                  <input type="text" name="uname" placeholder="Username" className="name" required />
                 </div>
                 <div className="input-container">
-                  <input type="password" name="pass" placeholder="Password" required />
+                  <img src={username} alt="email" className="email"/>
+                  <input type="password" name="pass" placeholder="Password" className="name" required />
                 </div>
                 <div className="input-container">
-                  <input type="text" name="email" placeholder="Email address" required />
+                  <img src={username} alt="email" className="email"/> 
+                  <input type="text" name="email" placeholder="Email address" className="name" required />
                 </div>
                 <div className="button-container">
-                  <input type="submit" value="Create account" />
+                  <input type="submit" value="Create account" className="button-input" />
                 </div>
-              </form> */}
+              </form>
             </div>
-      </div>
     </div>
   );
 
