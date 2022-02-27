@@ -25,7 +25,7 @@ function Navbar() {
                 </div></div>
             <div className='nav-right'>
                 <div className='nav-menu'>
-                    <Link to="/register" style={{textDecoration:'none',color:"black"}}>
+                    <Link to="/user" style={{textDecoration:'none',color:"black"}}>
                     REGISTER
                     </Link>
                 {/* <FontAwesomeIcon icon={faUser} /> */}
