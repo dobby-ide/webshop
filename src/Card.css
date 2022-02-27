@@ -16,14 +16,17 @@ body{
   display:grid;
 }
 .products_card{
+  
   margin-left: 2em;
   margin-right:2em;
   justify-content: center;
   text-align: center;
   align-items: center;
+  
 
 }
 .container{
+  position:relative;
   grid-row-start: 2 ;
   grid-column-start: 1;
   grid-row-end: 2;
@@ -38,6 +41,7 @@ body{
  
 }
 .row{
+ 
   max-width: 23rem;
   margin-top:20px;
   margin-bottom: 20px;
@@ -48,6 +52,7 @@ body{
   
 }
 .col-md-12{
+  
   text-align:center;
   
  width:140px;
@@ -125,4 +130,31 @@ box-shadow: 0 13px 15px rgba(0, 0, 0, .2);
 .add_to_cart_btn:active{
   transform:translateY(-1px);
   box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+}
+.overlay{
+  position:absolute;
+
+
+  background-color: rgb(255, 255, 255);
+  left:500px;
+  width:300px;;
+  height:auto;
+  border:solid black 1px;
+  
+}
+
+.single_img{
+  width:30%;
+}
+
+.overlay{
+  color:white;
+  font-size: larger;
+  width:100%;
+  position:absolute;
+  top:0px;
+ left:0px;
+ 
+  z-index:1;
+  
 }
