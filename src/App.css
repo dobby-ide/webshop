@@ -43,6 +43,7 @@
       font-size: 14px;
       cursor: pointer;
       margin-left: 25px;
+      text-decoration: none;
   }
   .login-error {
       border:1px solid red;
