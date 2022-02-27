@@ -15,16 +15,16 @@ const Page = () => {
   return routes;
 };
 
-function RouterPath() {
-  return (
-    <div>
-      {/* <Navbar/> */}
-     <Router>
-      <Page />
-    </Router>
-    </div>
-  )
-}
+// function RouterPath() {
+//   return (
+//     <div>
+//       {/* <Navbar/> */}
+//      <Router>
+//       <Page />
+//     </Router>
+//     </div>
+//   )
+// }
 
 // function RouterPath() {
 //   return (
@@ -47,5 +47,27 @@ function RouterPath() {
 //     </div>
 //   )
 // }
+function RouterPath() {
+  return(
+    <div>
+      {/* <Router> */}
+        <div>
+          <Navbar/>
+          <Router>
+            <Page/>
+            
+            {/* <Route path="/"exact element={<App/>}/>
+            <Route path="/user" element={<CreateUser/>}/> */}
+            
+          </Router>
+
+        </div>
+ 
+      {/* </Router> */}
+
+    </div>
+  )
+}
+
 
 export default RouterPath
