@@ -54,7 +54,9 @@ function CreateUser() {
 
   return (
     <div className="register-ui">
+      <div className='sub-register'>
         { registerForm }
+        </div>
     </div>
   );
 }

@@ -106,3 +106,23 @@
   .filter-btn{
     margin-right: 10px;
   }
+
+
+  /* createuser page styling */
+  .register-ui{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 90px 0 90px 0;
+    background-color: rgb(252, 252, 252);
+  }
+  .sub-register{
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    width: 45%;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+    padding-top: 30px;
+    border-radius: 60px;
+    background-color: white;
+  }
