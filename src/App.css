@@ -154,7 +154,7 @@
     background-color: #fff;
 } */
 
-.input-container{
+.input-container {
   padding-top: 20px;
 }
 
@@ -168,27 +168,17 @@
 .name{
     padding-left: 70px;
     font-size: 20px;
-    width: 300px;
-    height: 50px;
-    border-radius: 60px;
-    box-shadow: inset 0px 0px 25px 0px #888;
-    border: none;
-    outline: none;
-    background-color: #fff;
-}
-.second-input{
-    padding-top: 20px;
 }
 
-button{
-    width: 380px;
+.button-input{
+    width: 70%;
     height: 50px;
     border-radius: 60px;
-    background-color: #b103fc;
+    background-color: #301beb;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     border: none;
 }
-.login-button{
-    padding-top: 25px;
+.button-container{
+    padding-top: 40px;
 }
