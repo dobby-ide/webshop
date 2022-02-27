@@ -5,12 +5,16 @@ import {faTrashAlt, faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 
 const ShoppingCart = ()=>{
     const [cartList, setCartList] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
     const url = "http://localhost:3010/cart";
 
     const getCartItems = () =>{
+        let a=0;
         fetch(url)
         .then(response => response.json())
-        .then(data=>setCartList(data))
+        .then(data=>{
+            setCartList(data)
+        })
     }
     useEffect(()=>{getCartItems()}, [true]);
 
@@ -45,8 +49,7 @@ const ShoppingCart = ()=>{
         
 
     }
-    const handleChange =()=>{
-    }
+    
     return(
         <div>
             <h2>Shopping Cart</h2>
@@ -67,16 +70,23 @@ const ShoppingCart = ()=>{
                         <td colSpan="2">{item.title} </td>
                         <td>
                             <FontAwesomeIcon icon={faMinus} onClick={()=>reduceItem(item.id)} />
-                            <input type="text" name='quantity' id='quantity' value={item.quantity} onChange={handleChange} />
+                            <input type="text" name='quantity' id='quantity' value={item.quantity} readOnly/>
                             <FontAwesomeIcon icon={faPlus} onClick={()=>addItem(item.id)}/>
                         </td>
-                        <td>{item.quantity*item.price} € </td>
-                        <td> <FontAwesomeIcon                                
-                                icon={faTrashAlt}                               
-                              /></td>
-                    </tr>
+                        <td>{item.quantity*item.price} € </td>                        
+                        <td> <FontAwesomeIcon icon={faTrashAlt} /></td>
+                    </tr>                    
                 </tbody>)
-                })}
+                })}                
+                <tbody>
+                    <tr>
+                        <td colSpan="4"></td>
+                        <td>Total Price:</td>
+                        <td>{(cartList.reduce((previousValue, currentValue) => 
+                                previousValue + (currentValue.quantity*currentValue.price), 0)).toFixed(2)}  
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )
