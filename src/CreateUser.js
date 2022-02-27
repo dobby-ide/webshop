@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
-
+import user3 from "./img/user3.jpg";
 const url = "http://localhost:3020/user";
 
 // Post user data to json-server
@@ -35,20 +35,25 @@ function CreateUser() {
   // JSX code for login form
   const registerForm = (
     <div>
-      <form name="register" onSubmit={handleSubmit}>
-        <div className="input-container">
-          <input type="text" name="uname" placeholder="Username" required />
-        </div>
-        <div className="input-container">
-          <input type="password" name="pass" placeholder="Password" required />
-        </div>
-        <div className="input-container">
-          <input type="text" name="email" placeholder="Email address" required />
-        </div>
-        <div className="button-container">
-          <input type="submit" value="Create account" />
-        </div>
-      </form>
+      <div className='register-logo'>
+        <div className='register-container'>
+          <img className='register-profile' src={user3}></img>            
+              {/* <form name="register" onSubmit={handleSubmit}>
+                <div className="input-container">
+                  <input type="text" name="uname" placeholder="Username" required />
+                </div>
+                <div className="input-container">
+                  <input type="password" name="pass" placeholder="Password" required />
+                </div>
+                <div className="input-container">
+                  <input type="text" name="email" placeholder="Email address" required />
+                </div>
+                <div className="button-container">
+                  <input type="submit" value="Create account" />
+                </div>
+              </form> */}
+            </div>
+      </div>
     </div>
   );
 
