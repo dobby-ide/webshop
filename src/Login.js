@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
 
-const url = "http://localhost:3020/user?name=";
+const url = "http://localhost:3020/user?email=";
 
 // Get user data from server
 // Client-side auth is a big NO-NO, but it works for our project
-const getCredentials = async (name) => {
-    let resp = await fetch(url + name, { method: 'GET' });
+const getCredentials = async (email) => {
+    let resp = await fetch(url + email, { method: 'GET' });
     let data = await resp.json();
     return data;
 };
@@ -21,13 +21,13 @@ function Login(props) {
     //Prevent page reload
     event.preventDefault();
 
-    let { uname, pass } = document.forms.login;
-    uname.className = pass.className = "";
-    getCredentials(uname.value)
+    let { email, pass } = document.forms.login;
+    email.className = pass.className = "";
+    getCredentials(email.value)
         .then(creds => {
-            if (creds.length === 0) uname.className += "login-error";
+            if (creds.length === 0) email.className += "login-error";
             else if (creds[0].password !== pass.value) pass.className += "login-error";
-            else setUser(creds[0].name);
+            else setUser(creds[0].email);
         });
   };
 
@@ -42,7 +42,7 @@ function Login(props) {
     <div style={props.style}>
       <form name="login" onSubmit={handleLogin}>
         <div className="input-container">
-          <input type="text" name="uname" placeholder="Username" required />
+          <input type="text" name="email" placeholder="Email" required />
         </div>
         <div className="input-container">
           <input type="password" name="pass" placeholder="Password" required />
