@@ -19,14 +19,15 @@ background-color: #fff;
 const url = "http://localhost:3020/user";
 
 // Post user data to json-server
-const postAccount = async (name, pw, email) => {
+const postAccount = async (email, fname, lname, pw) => {
     let resp = await fetch(url, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-            name: name,
-            password: pw,
-            email: email
+            email: email,
+            firstname: fname,
+            lastname: lname,
+            password: pw
         })
     });
     if (resp.status === "201") return true;
@@ -39,8 +40,8 @@ function CreateUser() {
     //Prevent page reload
     event.preventDefault();
 
-    let { uname, pass, email } = document.forms.register;
-    postAccount(uname.value, pass.value, email.value)
+    let { email, fname, lname, pass } = document.forms.register;
+    postAccount(email.value, fname.value, lname.value, pass.value)
         .then(() => console.log("Account created."))
         .catch(() => console.log("Fail."));
   };
@@ -60,7 +61,11 @@ function CreateUser() {
               <form name="register" onSubmit={handleSubmit}>
                 <div className="input-container">
                   <img className="email" src={username} alt="username" />
-                  <Input type="text" name="uname" placeholder="Username" className="name" required />
+                  <Input type="text" name="fname" placeholder="First Name" className="name" required />
+                </div>
+                <div className="input-container">
+                  <img className="email" src={username} alt="username" />
+                  <Input type="text" name="lname" placeholder="Last Name" className="name" required />
                 </div>
                 <div className="input-container">
                   <img src={username} alt="email" className="email"/>
@@ -68,7 +73,9 @@ function CreateUser() {
                 </div>
                 <div className="input-container">
                   <img src={username} alt="email" className="email"/> 
-                  <Input type="text" name="email" placeholder="Email address" className="name" required />
+                  <Input type="text" name="email" placeholder="Email address" className="name" required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+
                 </div>
                 <div className="button-container">
                   <input type="submit" value="Create account" className="button-input" />
