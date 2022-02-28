@@ -36,25 +36,39 @@ const postAccount = async (email, fname, lname, pw) => {
 
 // CreateUser component shows the form for registering a user account
 function CreateUser() {
+  const [regSuccess, setRegSuccess ] = useState(false);
+
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
     let { email, fname, lname, pass } = document.forms.register;
     postAccount(email.value, fname.value, lname.value, pass.value)
-        .then(() => console.log("Account created."))
+        .then(() => setRegSuccess(true))
         .catch(() => console.log("Fail."));
   };
+
+  const successUI = (
+    <div>
+      <div className='register-logo'>
+        <div className='register-container'>
+          <img className='register-profile' src={username}></img>
+            </div>
+      </div>
+      <div>
+              <h1>Welcome shopping!</h1>
+              <div>Your account was registered succesfully. </div>
+            </div>
+      </div>
+  );
 
   // JSX code for login form
   const registerForm = (
     <div>
       <div className='register-logo'>
         <div className='register-container'>
-          <img className='register-profile' src={username}></img>            
-              
+          <img className='register-profile' src={username}></img>
             </div>
-            
       </div>
       <div>
               <h1>Registration Page </h1>
@@ -88,7 +102,7 @@ function CreateUser() {
   return (
     <div className="register-ui">
       <div className='sub-register'>
-        { registerForm }
+        { regSuccess ? successUI : registerForm }
         </div>
     </div>
   );
