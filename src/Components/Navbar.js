@@ -18,14 +18,14 @@ function Navbar() {
     <div className='nav-container'>
         <BrowserRouter>
         <div className='nav-wrapper'>
-            <div className='nav-left'><h1><Link to="/">CLOTHS.</Link></h1></div>
+            <div className='nav-left'><h1><Link to="/" style={{textDecoration:'none',color:"black"}}>CLOTHS.</Link></h1></div>
             <div className='nav-center'><div className='search-container'>
                 <Input placeholder='search'/>
                 <Search style={{color:"gray",fontSize:16}}/>
                 </div></div>
             <div className='nav-right'>
                 <div className='nav-menu'>
-                    <Link to="/register">
+                    <Link to="/user" style={{textDecoration:'none',color:"black"}}>
                     REGISTER
                     </Link>
                 {/* <FontAwesomeIcon icon={faUser} /> */}

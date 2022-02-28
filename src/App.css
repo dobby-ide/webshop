@@ -43,6 +43,7 @@
       font-size: 14px;
       cursor: pointer;
       margin-left: 25px;
+      text-decoration: none;
   }
   .login-error {
       border:1px solid red;
@@ -105,3 +106,79 @@
   .filter-btn{
     margin-right: 10px;
   }
+
+
+  /* createuser page styling */
+  .register-ui{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 90px 0 90px 0;
+    background-color: rgb(252, 252, 252);
+  }
+  .sub-register{
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    width: 45%;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+    padding-top: 30px;
+    border-radius: 60px;
+    background-color: white;
+  }
+  .register-logo{
+    padding-top: 20px;
+    justify-content: center;
+    display: flex;
+  }
+  .register-container{
+    background-color: rgb(223, 221, 221);
+    border-radius: 150px;
+    align-items: center;
+    display: flex;
+    height: 115px;
+    width: 115px;
+  }
+  .register-profile{
+    height: 100%;
+    width: 100%;
+    border-radius:100px ;
+  }
+  /* input{
+    width: 300px;
+    height: 50px;
+    border-radius: 60px;
+    box-shadow: inset 0px 0px 25px 0px #888;
+    border: none;
+    outline: none;
+    background-color: #fff;
+} */
+
+.input-container {
+  padding-top: 20px;
+}
+
+.email{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    padding: 14px 0 0 25px;
+}
+
+.name{
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+.button-input{
+    width: 70%;
+    height: 50px;
+    border-radius: 60px;
+    background-color: #301beb;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+.button-container{
+    padding-top: 40px;
+}
