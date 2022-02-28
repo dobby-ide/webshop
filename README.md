@@ -1,5 +1,34 @@
 # Project notes
 
+## 2022-02-28 Meeting
+
+### products
+* looking good
+* small style fixes
+* search can be done
+
+### shopping cart
+* working
+* style needs to be fixed for disabled button
+
+### navigation
+* CORS issue with server
+* routing needs refresh before routing happens
+
+### user
+* figure out login UI
+* integrate user account to cart
+* make a checkout/order component
+
+### style
+* looking good
+* minor responsivity fixes needed
+
+## presentation
+* meet @ thursday
+* google slides
+
+
 ## 2022-02-21 Meeting
 
 ### project dependencies
