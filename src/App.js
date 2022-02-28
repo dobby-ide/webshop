@@ -12,7 +12,6 @@ import Footer from './Components/Footer';
 import CreateUser from './CreateUser';
 import RouterPath from './RouterPath';
 import Card from './Card';
-import ShoppingCart from './ShoppingCart';
 
 //useState to hide/show components
 
@@ -72,7 +71,6 @@ function App() {
         changeToAllProductsVisibility={onAllProductsVisibility}
       />
       <div className="container">
-        <ShoppingCart/>
         {productsisVisible ? (
           <Products visibilityOnOff={productsisVisible} />
         ) : null}
