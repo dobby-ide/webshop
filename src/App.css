@@ -46,8 +46,8 @@
       text-decoration: none;
   }
   .login-error {
-      border:1px solid red;
-      outline:2px solid red;
+      border:1px solid red !important;
+      outline:2px solid red !important;
   }
   .footer-container {
     display: flex;
