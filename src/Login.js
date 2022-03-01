@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
@@ -26,26 +26,27 @@ const getCredentials = async (email) => {
 
 // Login component displays login UI and authenticates from json-server
 function Login(props) {
-  const [user, setUser] = useState("");
-
   const handleLogin = (event) => {
     //Prevent page reload
     event.preventDefault();
 
     let { email, pass } = document.forms.login;
-    email.className = pass.className = "";
+    email.className = pass.className = pass.className.replace(" login-error", "");
     getCredentials(email.value)
         .then(creds => {
-            if (creds.length === 0) email.className += "login-error";
-            else if (creds[0].password !== pass.value) pass.className += "login-error";
-            else setUser(creds[0].email);
+            if (creds.length === 0) email.className += " login-error";
+            else if (creds[0].password !== pass.value) pass.className += " login-error";
+            else {
+                props.setUser(creds[0].email);
+                props.setLoginMode("logout-ui");
+            }
         });
   };
 
   const handleLogout = (event) => {
     event.preventDefault();
-    setUser("");
-    props.setToggle(false);
+    props.setUser("");
+    props.setLoginMode("initial");
   };
 
   // JSX code for login form
@@ -61,7 +62,7 @@ function Login(props) {
         </div>
         <div className="button-container">
           <input className="add_to_cart_btn" type="submit" value="Login" />
-          <button className="add_to_cart_btn" onClick={() => props.setToggle(!props.toggle)}>Cancel</button>
+          <button className="add_to_cart_btn" onClick={() => props.setLoginMode("initial")}>Cancel</button>
         </div>
       </form>
     </div>
@@ -71,7 +72,7 @@ function Login(props) {
     <div className="form">
       <form name="logout" onSubmit={handleLogout}>
         <div className="input-container">
-          Logged in as {user}
+          Logged in as {props.user}
           <input className="add_to_cart_btn" type="submit" value="Log out" />
         </div>
       </form>
@@ -79,8 +80,8 @@ function Login(props) {
   );
 
   return (
-    <div className={props.toggle ? "login-ui" : "hidden"}>
-        { user === "" ? loginForm : logoutForm }
+    <div className={props.loginMode === "login-ui" ? "login-ui" : "hidden"}>
+        { props.user === "" ? loginForm : logoutForm }
     </div>
   );
 }
