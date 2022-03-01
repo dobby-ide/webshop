@@ -48,7 +48,7 @@ function Login(props) {
           <input type="password" name="pass" placeholder="Password" required />
         </div>
         <div className="button-container">
-          <input type="submit" value="Login" />
+          <input className="add_to_cart_btn" type="submit" value="Login" />
         </div>
       </form>
     </div>
@@ -59,7 +59,7 @@ function Login(props) {
       <form name="logout" onSubmit={handleLogout}>
         <div className="input-container">
           Logged in as {user}
-          <input type="submit" value="Log out" />
+          <input className="add_to_cart_btn" type="submit" value="Log out" />
         </div>
       </form>
     </div>
