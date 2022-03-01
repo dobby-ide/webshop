@@ -8,33 +8,6 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
       "quantity": "1"
-    },
-    {
-      "id": 18,
-      "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
-      "price": 9.85,
-      "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
-      "category": "women's clothing",
-      "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
-      "quantity": "1"
-    },
-    {
-      "id": 17,
-      "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
-      "price": 39.99,
-      "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
-      "category": "women's clothing",
-      "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
-      "quantity": "1"
-    },
-    {
-      "id": 20,
-      "title": "DANVOUY Womens T Shirt Casual Cotton Short",
-      "price": 12.99,
-      "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
-      "category": "women's clothing",
-      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
-      "quantity": "1"
     }
   ]
 }
