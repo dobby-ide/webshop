@@ -8,7 +8,6 @@ const ShoppingCart = ()=>{
     const url = "http://localhost:3010/cart";
 
     const getCartItems = () =>{
-        let a=0;
         fetch(url)
         .then(response => response.json())
         .then(data=>{
@@ -16,41 +15,67 @@ const ShoppingCart = ()=>{
         })
     }
     useEffect(()=>{getCartItems()}, [true]);
-
     const addItem = (id)=>{
         const itemToChange = cartList.find((element)=>element.id===id);
-        console.log(itemToChange)        
+        console.log(itemToChange)
+                let newQuantity=0;
             setCartList(cartList.map((item)=>{
-            if(item.id==itemToChange.id){
-                let newQuantity = Number(itemToChange.quantity)+1
+            if(item.id===itemToChange.id){
+                newQuantity = Number(itemToChange.quantity)+1
                 return{
                     ...item,
                     quantity:newQuantity,
                 }
             }
             return item;
-        }));   
+        }));
+        const options = {
+        method: 'PATCH',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({quantity:newQuantity}),
+        };
+        fetch(url+"/"+id, options)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.id + 'Updated successfully');
+            });   
     }
     const reduceItem = (id)=>{
         const itemToChange = cartList.find((element)=>element.id===id);
         console.log(itemToChange)
         if(itemToChange.quantity>0){
+            let newQuantity= itemToChange.quantity-1
             setCartList(cartList.map((item)=>{
-            if(item.id==itemToChange.id){
+            if(item.id===itemToChange.id){
                 return{
                     ...item,
-                    quantity:(itemToChange.quantity-1),                    
+                    quantity:newQuantity,                    
                 }
             }
             return item;
         }));
+        const options = {
+        method: 'PATCH',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({quantity:newQuantity}),
+        };
+        fetch(url+"/"+id, options)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.id + 'Updated successfully');
+            });
         }       
      }
      const deleteItem=(id) => {
         const updatedList = cartList.filter(element=>element.id!==id)
         setCartList(updatedList)
+       fetch(url+"/"+id, {method:'DELETE'})
+        .then(response => response.json())
+        
+        
     }
     
+  
     return(
         <div>
             <h2>Shopping Cart</h2>
