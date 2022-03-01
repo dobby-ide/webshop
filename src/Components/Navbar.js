@@ -31,7 +31,7 @@ function Navbar() {
                 {/* <FontAwesomeIcon icon={faUser} /> */}
                 </div>
                 <div className='nav-menu'>
-                    <span onClick={() => setToggle(!toggle)}>{toggle ? "" : "SIGN IN"}</span>
+                    <button className="add_to_cart_btn" onClick={() => setToggle(!toggle)}>{toggle ? "" : "SIGN IN"}</button>
                     <Login style={toggle ? {display:"block"} : {display:"none"}} setToggle={setToggle} />
                 </div>
                 <div className='nav-menu'>
