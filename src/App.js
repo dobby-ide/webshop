@@ -10,9 +10,10 @@ import Electronics from './Electronics';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import CreateUser from './CreateUser';
-import RouterPath from './RouterPath';
+// import RouterPath from './RouterPath';
 import Card from './Card';
 import ShoppingCart from './ShoppingCart';
+import MyRouting from './MyRouting';
 
 //useState to hide/show components
 
@@ -58,11 +59,12 @@ function App() {
     setProductsIsVisible(false);
     setWomenClothingIsVisible(false);
   };
+
   return (
     <Card>
       {/* <Navbar/>
       <RouterPath/> */}
-      {/* <CreateUser/> */}
+
       <Filter
         visibilityOnOff={productsisVisible}
         changeWomenVisibility={onWomenVisibility}
@@ -72,7 +74,12 @@ function App() {
         changeToAllProductsVisibility={onAllProductsVisibility}
       />
       <div className="container">
-        <ShoppingCart/>
+        <MyRouting path="/cart">
+          <ShoppingCart />
+        </MyRouting>{' '}
+        <MyRouting path="/createuser">
+          <CreateUser />
+        </MyRouting>
         {productsisVisible ? (
           <Products visibilityOnOff={productsisVisible} />
         ) : null}
