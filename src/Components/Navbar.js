@@ -1,5 +1,5 @@
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import styled from "styled-components";
 import { Link, BrowserRouter } from 'react-router-dom';
@@ -12,7 +12,8 @@ const Input = styled.input`
  `;
 
 function Navbar() {
-  const [toggle, setToggle] = React.useState(false);
+  const [loginMode, setLoginMode] = React.useState("initial");
+  const [user, setUser] = useState("");
 
   return (
     <div className='nav-container'>
@@ -31,8 +32,10 @@ function Navbar() {
                 {/* <FontAwesomeIcon icon={faUser} /> */}
                 </div>
                 <div className='nav-menu'>
-                    <button className="add_to_cart_btn" onClick={() => setToggle(!toggle)} disabled={toggle ? "disabled" : ""}>SIGN IN</button>
-                    <Login className={toggle ? "login_form" : "hidden"} toggle={toggle} setToggle={setToggle} />
+                    <button className="add_to_cart_btn" onClick={() => setLoginMode("login-ui")}
+                        disabled={loginMode === "login-ui" ? "disabled" : ""}>{user === "" ? "SIGN IN" : user}</button>
+                    <Login className={loginMode === "login-ui" ? "login_form" : "hidden"}
+                        user={user} setUser={setUser} loginMode={loginMode} setLoginMode={setLoginMode} />
                 </div>
                 <div className='nav-menu'>
                 <Badge badgeContent={5} color="primary">
