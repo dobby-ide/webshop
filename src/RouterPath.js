@@ -53,13 +53,9 @@ function RouterPath() {
       {/* <Router> */}
         <div>
           <Navbar/>
-          <Router>
-            <Page/>
             
             {/* <Route path="/"exact element={<App/>}/>
             <Route path="/user" element={<CreateUser/>}/> */}
-            
-          </Router>
 
         </div>
  
