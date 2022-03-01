@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Badge } from '@material-ui/core';
 import Login from '../Login';
 import CreateUser from "../CreateUser";
+import ShoppingCart from "../ShoppingCart";
 import App from "../App";
 
 const Input = styled.input`
@@ -40,14 +41,17 @@ function Navbar() {
                         user={user} setUser={setUser} loginMode={loginMode} setLoginMode={setLoginMode} />
                 </div>
                 <div className='nav-menu'>
-                <Badge badgeContent={5} color="primary">
-                    <ShoppingCartOutlined color="action" />
-                    </Badge>
+                    <Link to="/cart" style={{textDecoration:'none',color:"black"}}>
+                        <Badge badgeContent={5} color="primary">
+                        <ShoppingCartOutlined color="action" />
+                        </Badge>
+                    </Link>
                 </div>
             </div>
         </div>
         <Routes>
             <Route path="/" element={<App/>} />
+            <Route path="cart/*" element={<ShoppingCart/>} />
             <Route path="user/*" element={<CreateUser/>} />
         </Routes>
         </BrowserRouter>
