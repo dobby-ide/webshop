@@ -182,3 +182,19 @@
 .button-container{
     padding-top: 40px;
 }
+.login-ui {
+    display:block !important;
+    position:absolute;
+    top:75px;
+    right:75px;
+    z-index:1;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+    border-radius:60px;
+    padding: 25px;
+    background:white;
+}
+.hidden {
+    display:none !important;
+}

@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
+import styled from "styled-components";
+
+const Input = styled.input`
+width: 350px;
+height: 50px;
+border-radius: 60px;
+box-shadow: inset 0px 0px 25px 0px #888;
+border: none;
+outline: none;
+background-color: #fff;
+ `;
 
 const url = "http://localhost:3020/user?email=";
 
@@ -40,15 +51,17 @@ function Login(props) {
   // JSX code for login form
   const loginForm = (
     <div style={props.style}>
+      <h1>Login</h1>
       <form name="login" onSubmit={handleLogin}>
         <div className="input-container">
-          <input type="text" name="email" placeholder="Email" required />
+          <Input type="text" name="email" placeholder="Email" className="name" required />
         </div>
         <div className="input-container">
-          <input type="password" name="pass" placeholder="Password" required />
+          <Input type="password" name="pass" placeholder="Password" className="name" required />
         </div>
         <div className="button-container">
           <input className="add_to_cart_btn" type="submit" value="Login" />
+          <button className="add_to_cart_btn" onClick={() => props.setToggle(!props.toggle)}>Cancel</button>
         </div>
       </form>
     </div>
@@ -66,7 +79,7 @@ function Login(props) {
   );
 
   return (
-    <div className="login-ui">
+    <div className={props.toggle ? "login-ui" : "hidden"}>
         { user === "" ? loginForm : logoutForm }
     </div>
   );
