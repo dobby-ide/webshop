@@ -95,7 +95,7 @@ const ShoppingCart = ()=>{
                     <tr>
                         <td colSpan="2"><img src={item.image} alt="image unavailable" className="products_img" ></img></td>
                         <td colSpan="2">{item.title} </td>
-                        <td>
+                        <td className='quantity-container'>
                             <FontAwesomeIcon icon={faMinus} onClick={()=>reduceItem(item.id)} />
                             <input type="text" className='item-quantity' name='quantity' id='quantity' value={item.quantity} readOnly/>
                             <FontAwesomeIcon icon={faPlus} onClick={()=>addItem(item.id)}/>
