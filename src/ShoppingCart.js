@@ -5,6 +5,7 @@ import {faTrashAlt, faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 
 const ShoppingCart = ()=>{
     const [cartList, setCartList] = useState([])
+    const [totalItems, setTotalItems] = useState(8)
     const url = "http://localhost:3010/cart";
 
     const getCartItems = () =>{
@@ -77,15 +78,15 @@ const ShoppingCart = ()=>{
     
   
     return(
-        <div>
+        <div className='cart-container'>
             <h2>Shopping Cart</h2>
-           <table width="100%">
+           <table className='cart-table'>
             <tbody>
                 <tr>
-                    <td colSpan="2" rowSpan="2">Product</td>
-                    <td colSpan="2">Description</td>
-                    <td>Quantity</td>
-                    <td>Price</td>
+                    <th colSpan="2" rowSpan="2">Product</th>
+                    <th colSpan="2">Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                 </tr>
             </tbody>
             {cartList
@@ -96,16 +97,16 @@ const ShoppingCart = ()=>{
                         <td colSpan="2">{item.title} </td>
                         <td>
                             <FontAwesomeIcon icon={faMinus} onClick={()=>reduceItem(item.id)} />
-                            <input type="text" name='quantity' id='quantity' value={item.quantity} readOnly/>
+                            <input type="text" className='item-quantity' name='quantity' id='quantity' value={item.quantity} readOnly/>
                             <FontAwesomeIcon icon={faPlus} onClick={()=>addItem(item.id)}/>
                         </td>
-                        <td>{item.quantity*item.price} € </td>                        
+                        <td className='price'>{item.quantity*item.price} € </td>                        
                         <td> <FontAwesomeIcon icon={faTrashAlt} onClick={()=>deleteItem(item.id)}/></td>
                     </tr>                    
                 </tbody>)
                 })}                
                 <tbody>
-                    <tr>
+                    <tr className='total-price'>
                         <td colSpan="4"></td>
                         <td>Total Price:</td>
                         <td>{(cartList.reduce((previousValue, currentValue) => 
