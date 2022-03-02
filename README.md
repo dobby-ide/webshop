@@ -1,4 +1,5 @@
 # Project notes
+## 2022-03-01 v1.1.0 release
 
 ## 2022-02-28 Meeting
 

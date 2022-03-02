@@ -1,10 +1,13 @@
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import React from 'react';
+import React, { useState } from 'react';
+import { Route, Routes, BrowserRouter, Link } from "react-router-dom";
 import '../App.css';
 import styled from "styled-components";
-import { Link, BrowserRouter } from 'react-router-dom';
 import { Badge } from '@material-ui/core';
 import Login from '../Login';
+import CreateUser from "../CreateUser";
+import ShoppingCart from "../ShoppingCart";
+import App from "../App";
 
 const Input = styled.input`
  border: none;
@@ -12,7 +15,8 @@ const Input = styled.input`
  `;
 
 function Navbar() {
-  const [toggle, setToggle] = React.useState(false);
+  const [loginMode, setLoginMode] = React.useState("initial");
+  const [user, setUser] = useState("");
 
   return (
     <div className='nav-container'>
@@ -31,16 +35,25 @@ function Navbar() {
                 {/* <FontAwesomeIcon icon={faUser} /> */}
                 </div>
                 <div className='nav-menu'>
-                    <span onClick={() => setToggle(!toggle)}>{toggle ? "" : "SIGN IN"}</span>
-                    <Login style={toggle ? {display:"block"} : {display:"none"}} setToggle={setToggle} />
+                    <button className="add_to_cart_btn" onClick={() => setLoginMode("login-ui")}
+                        disabled={loginMode === "login-ui" ? "disabled" : ""}>{user === "" ? "SIGN IN" : user}</button>
+                    <Login className={loginMode === "login-ui" ? "login_form" : "hidden"}
+                        user={user} setUser={setUser} loginMode={loginMode} setLoginMode={setLoginMode} />
                 </div>
                 <div className='nav-menu'>
-                <Badge badgeContent={5} color="primary">
-                    <ShoppingCartOutlined color="action" />
-                    </Badge>
+                    <Link to="/cart" style={{textDecoration:'none',color:"black"}}>
+                        <Badge badgeContent={5} color="primary">
+                        <ShoppingCartOutlined color="action" />
+                        </Badge>
+                    </Link>
                 </div>
             </div>
         </div>
+        <Routes>
+            <Route path="/" element={<App/>} />
+            <Route path="cart/*" element={<ShoppingCart/>} />
+            <Route path="user/*" element={<CreateUser/>} />
+        </Routes>
         </BrowserRouter>
         
     </div>

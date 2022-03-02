@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { useAsync } from 'react-async';
+import styled from "styled-components";
+
+const Input = styled.input`
+width: 350px;
+height: 50px;
+border-radius: 60px;
+box-shadow: inset 0px 0px 25px 0px #888;
+border: none;
+outline: none;
+background-color: #fff;
+ `;
 
 const url = "http://localhost:3020/user?email=";
 
@@ -15,40 +26,43 @@ const getCredentials = async (email) => {
 
 // Login component displays login UI and authenticates from json-server
 function Login(props) {
-  const [user, setUser] = useState("");
-
   const handleLogin = (event) => {
     //Prevent page reload
     event.preventDefault();
 
     let { email, pass } = document.forms.login;
-    email.className = pass.className = "";
+    email.className = pass.className = pass.className.replace(" login-error", "");
     getCredentials(email.value)
         .then(creds => {
-            if (creds.length === 0) email.className += "login-error";
-            else if (creds[0].password !== pass.value) pass.className += "login-error";
-            else setUser(creds[0].email);
+            if (creds.length === 0) email.className += " login-error";
+            else if (creds[0].password !== pass.value) pass.className += " login-error";
+            else {
+                props.setUser(creds[0].email);
+                props.setLoginMode("logout-ui");
+            }
         });
   };
 
   const handleLogout = (event) => {
     event.preventDefault();
-    setUser("");
-    props.setToggle(false);
+    props.setUser("");
+    props.setLoginMode("initial");
   };
 
   // JSX code for login form
   const loginForm = (
     <div style={props.style}>
+      <h1>Login</h1>
       <form name="login" onSubmit={handleLogin}>
         <div className="input-container">
-          <input type="text" name="email" placeholder="Email" required />
+          <Input type="text" name="email" placeholder="Email" className="name" required />
         </div>
         <div className="input-container">
-          <input type="password" name="pass" placeholder="Password" required />
+          <Input type="password" name="pass" placeholder="Password" className="name" required />
         </div>
         <div className="button-container">
-          <input type="submit" value="Login" />
+          <input className="add_to_cart_btn" type="submit" value="Login" />
+          <button className="add_to_cart_btn" onClick={() => props.setLoginMode("initial")}>Cancel</button>
         </div>
       </form>
     </div>
@@ -58,16 +72,16 @@ function Login(props) {
     <div className="form">
       <form name="logout" onSubmit={handleLogout}>
         <div className="input-container">
-          Logged in as {user}
-          <input type="submit" value="Log out" />
+          Logged in as {props.user}
+          <input className="add_to_cart_btn" type="submit" value="Log out" />
         </div>
       </form>
     </div>
   );
 
   return (
-    <div className="login-ui">
-        { user === "" ? loginForm : logoutForm }
+    <div className={props.loginMode === "login-ui" ? "login-ui" : "hidden"}>
+        { props.user === "" ? loginForm : logoutForm }
     </div>
   );
 }
