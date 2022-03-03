@@ -120,8 +120,8 @@
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 500px) {
-  .footer-container {
+@media only screen and (max-width: 900px) {
+  .footer-container, .filter-container {
     flex-direction: column;
   }
   .footer-center {
