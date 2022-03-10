@@ -60,7 +60,12 @@ function Products() {
     getCart();
   }, [true]);
 
-  if (isLoading) return 'Loading...';
+  if (isLoading)
+    return (
+      <div class="ui active dimmer">
+        <div class="ui big text loader">Loading</div>
+      </div>
+    );
   if (error) return `Something went wrong: ${error.message}`;
   if (data)
     // The rendered component
